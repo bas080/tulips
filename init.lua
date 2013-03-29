@@ -38,6 +38,7 @@ for i = 1, 12 do
     drop = {
 		  max_items = 3,
 		  items = {
+			  { items = {"unifieddyes:" .. hue} },
 			  { items = {mod..":"..hue.."_seeds"} },
 			  { items = {mod..":"..hue.."_seeds"}, rarity = 2},
 			  { items = {mod..":"..hue.."_seeds"}, rarity = 5},
@@ -103,14 +104,6 @@ for i = 1, 12 do
     
   })
 
-  --craft
-  minetest.register_craft( {
-    type = "shapeless",
-    output = "unifieddyes:" .. hue,
-    recipe = {
-      mod..":" .. hue,
-    },
-  })
 end
 
 --spawning
