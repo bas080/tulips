@@ -2,6 +2,7 @@ local mod = "tulips"
 tulips_table = {}
 img = ""
 tulips_seed_diff = 420420
+hue2 = "white"
 minetest.register_node(mod..":plant", {--register wild plant
   tile_images = {img},
   inventory_image = img,
@@ -12,7 +13,7 @@ minetest.register_node(mod..":plant", {--register wild plant
   sunlight_propagates = true,
   walkable = false,
   visual_scale = 1.3,
-  groups = { snappy = 3,flammable=2, attached_node=1},
+  groups = {not_in_creative_inventory=1, snappy = 3,flammable=2, attached_node=1},
   sounds = default.node_sound_leaves_defaults(),
   selection_box = {
     type = "fixed",
@@ -21,9 +22,9 @@ minetest.register_node(mod..":plant", {--register wild plant
 })
   
 
-for i = 1, 12 do
-  local hue = HUES[i]
-  local hue2 = HUES2[i]
+for i = 1, 9 do
+  local hue = dye.basecolors[i]
+  local hue2 = dye.basecolors[i]
   local img = mod.."_"..hue..".png"
   --farming
   farming:add_plant(mod..":"..hue, {"tulips:"..hue.."_seeds",mod..":"..hue.."_sprout"}, 60, 2)
@@ -37,7 +38,7 @@ for i = 1, 12 do
     drop = {
 		  max_items = 3,
 		  items = {
-			  { items = {"unifieddyes:" .. hue} },
+			  { items = {"dye:" .. hue} },
 			  { items = {mod..":"..hue.."_seeds"} },
 			  { items = {mod..":"..hue.."_seeds"}, rarity = 2},
 			  { items = {mod..":"..hue.."_seeds"}, rarity = 5},
@@ -52,7 +53,7 @@ for i = 1, 12 do
     sounds = default.node_sound_leaves_defaults(),
     selection_box = {
       type = "fixed",
-      fixed = { -3/16, -8/16, -3/16, 3/16, 10/16, 3/16 },
+      fixed = { -3/16, -8/16, -3/16, 3/16, 3/16, 3/16 },
     },
   })
   --sprout
@@ -71,7 +72,7 @@ for i = 1, 12 do
     sounds = default.node_sound_leaves_defaults(),
     selection_box = {
       type = "fixed",
-      fixed = { -3/16, -8/16, -3/16, 3/16, 8/16, 3/16 },
+      fixed = { -3/16, -8/16, -3/16, 3/16, 0, 3/16 },
     },
   })
 
