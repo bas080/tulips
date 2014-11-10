@@ -1,3 +1,34 @@
+--make variables local
+local HUES = {
+  "red",
+  "orange",
+  "yellow",
+  "lime",
+  "green",
+  "aqua",
+  "cyan",
+  "skyblue",
+  "blue",
+  "violet",
+  "magenta",
+  "redviolet"
+}
+
+local HUES2 = {
+  "Red",
+  "Orange",
+  "Yellow",
+  "Lime",
+  "Green",
+  "Aqua",
+  "Cyan",
+  "Sky-blue",
+  "Blue",
+  "Violet",
+  "Magenta",
+  "Red-violet"
+}
+
 local mod = "tulips"
 tulips_table = {}
 img = ""
@@ -23,8 +54,8 @@ minetest.register_node(mod..":plant", {--register wild plant
   
 
 for i = 1, 9 do
-  local hue = dye.basecolors[i]
-  local hue2 = dye.basecolors[i]
+  local hue = HUES[i]
+  local hue2 = HUES2[i]
   local img = mod.."_"..hue..".png"
   --farming
   farming:add_plant(mod..":"..hue, {"tulips:"..hue.."_seeds",mod..":"..hue.."_sprout"}, 60, 2)
